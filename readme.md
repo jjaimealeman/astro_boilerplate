@@ -52,3 +52,13 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+---
+
+Wednesday, April 10, 2024 @ 09:21:29 PM
+
+```sh
+npm create astro@latest
+pnpm astro add tailwind
+
+```
