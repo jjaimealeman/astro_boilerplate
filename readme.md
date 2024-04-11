@@ -61,11 +61,17 @@ Wednesday, April 10, 2024 @ 09:21:29 PM
 npm create astro@latest
 pnpm astro add tailwind
 pnpm i --save-dev @types/node
+
+pnpm i -D eslint eslint-plugin-astro eslint-plugin-jsx-a11y @typescript-eslint/parser prettier prettier-config-standard prettier-plugin-astro
+
+pnpm i -D prettier-plugin-tailwindcss
 ```
 
 ## TODO
+
 - INSTALL prettier-plugin-tailwindcss
-`.prettierrc.mjs`
+  `.prettierrc.mjs`
+
 ```
 /** u/type {import("prettier").Config} */
 export default {
@@ -82,7 +88,9 @@ export default {
 ```
 
 ---
+
 ## RESOURCES:
+
 - https://www.kevinzunigacuellar.com/blog/dark-mode-in-astro/
 - https://techsquidtv.com/blog/generating-open-graph-images-for-astro/
 - https://patheticgeek.dev/blog/astro-prettier-eslint-vscode
