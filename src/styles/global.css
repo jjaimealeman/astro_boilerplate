@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::selection {
+    @apply bg-zinc-800 text-white;
+  }
+  h1 {
+    font-family: 'Bebas Neue', cursive;
+  }
+  body,
+  h2,
+  h3,
+  h4 {
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  /* be-vietnam-pro-regular - latin */
+  @font-face {
+    font-family: 'Be Vietnam Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/be-vietnam-pro-v10-latin-regular.woff2') format('woff2'),
+      url('/fonts/be-vietnam-pro-v10-latin-regular.woff') format('woff');
+    font-display: swap;
+  }
+
+  /* be-vietnam-pro-500 - latin */
+  @font-face {
+    font-family: 'Be Vietnam Pro';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''), url('/fonts/be-vietnam-pro-v10-latin-500.woff2') format('woff2'),
+      url('/fonts/be-vietnam-pro-v10-latin-500.woff') format('woff');
+    font-display: swap;
+  }
+
+  /* architects-daughter-regular - latin */
+  @font-face {
+    font-family: 'Architects Daughter';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/architects-daughter-v18-latin-regular.woff2') format('woff2'),
+      /* Chrome 26+, Opera 23+, Firefox 39+ */ url('/fonts/architects-daughter-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    font-display: swap;
+  }
+
+  /* bebas-neue-regular - latin */
+  @font-face {
+    font-family: 'Bebas Neue';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/bebas-neue-v9-latin-regular.woff2') format('woff2'),
+      url('/fonts/bebas-neue-v9-latin-regular.woff') format('woff');
+    font-display: swap;
+  }
+}
+
+@layer components {
+  .text-page {
+    color: var(--aw-color-text-page);
+  }
+
+  .text-muted {
+    color: var(--aw-color-text-muted);
+  }
+
+  .bg-light {
+    background-color: var(--aw-color-bg-page);
+  }
+
+  .bg-dark {
+    @apply bg-slate-900;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full shadow-md border-gray-400 border bg-transparent font-medium text-center text-base text-page leading-snug transition py-3.5 px-6 md:px-8 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:bg-gray-100 hover:border-gray-600 dark:text-slate-300 dark:border-slate-500 dark:hover:bg-slate-800 dark:hover:border-slate-800;
+  }
+
+  .btn-ghost {
+    @apply border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  }
+
+  .btn-primary {
+    @apply font-semibold bg-primary text-white border-primary hover:bg-blue-900 hover:border-blue-900 hover:text-white dark:text-white dark:bg-primary dark:border-primary dark:hover:border-blue-900 dark:hover:bg-blue-900;
+  }
+
+  .assb {
+    @apply bg-sky-500/90;
+  }
+  .assr {
+    @apply bg-red-500/90;
+  }
+  .alink:not(a) {
+    @apply text-zinc-800 dark:text-zinc-800 bg-amber-300 hover:bg-sky-400 p-1 transition-all duration-300 hover:tracking-wider no-underline;
+  }
+  .alink:is(a) {
+    @apply text-zinc-800 dark:text-zinc-800 bg-amber-300 border-b-2 border-sky-400 hover:bg-white hover:border-b-2 hover:border-sky-400 p-1 transition-colors duration-300 no-underline;
+  }
+}
+
+#header.scroll {
+    @apply shadow-md border-b-2 md:border-b-4 border-sky-300 bg-white md:bg-white/90 md:backdrop-blur-sm dark:bg-zinc-900 dark:md:bg-zinc-900/90 transition-all duration-200;
+    /* @apply shadow-md md:shadow-lg bg-white md:bg-white/90 md:backdrop-blur-sm dark:bg-zinc-900 dark:md:bg-zinc-900/90 transition-all duration-200; */
+  /* @apply shadow-md md:shadow-lg bg-white md:backdrop-blur-sm dark:bg-zinc-900 transition-all duration-200; */
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[astro-icon].icon-light > * {
+  stroke-width: 1.2;
+}
+
+[astro-icon].icon-bold > * {
+  stroke-width: 2.4;
+}
+
+[data-aw-toggle-menu] path {
+  @apply transition;
+}
+[data-aw-toggle-menu].expanded g > path:first-child {
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+}
+
+[data-aw-toggle-menu].expanded g > path:last-child {
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}
+
+/*
+TESTING:
+  VisuBezier (CSS Easing Preview)
+  https://marketplace.visualstudio.com/items?itemName=chriskirknielsen.visubezier&ssr=false#overview
+*/
+.testing {
+	transition-timing-function: ease;
+	transition-timing-function: ease-in;
+	transition-timing-function: ease-out;
+	transition-timing-function: ease-in-out;
+	transition-timing-function: cubic-bezier(0.4, -0.2, 0.42, 1.2);
+	transition-timing-function: steps(7);
+	transition-timing-function: steps(5, jump-none);
+	transition-timing-function: steps(8, jump-both);
+	transition-timing-function: steps(4, jump-start);
+	transition-timing-function: steps(2, jump-end);
+	transition-timing-function: step-start;
+	transition-timing-function: step-end;
+	transition-timing-function: ease, steps(3), cubic-bezier(1, 0, 0, 1);
+}
