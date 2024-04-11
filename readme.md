@@ -60,5 +60,5 @@ Wednesday, April 10, 2024 @ 09:21:29 PM
 ```sh
 npm create astro@latest
 pnpm astro add tailwind
-
+pnpm i --save-dev @types/node
 ```
