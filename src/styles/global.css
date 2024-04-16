@@ -39,6 +39,17 @@
   ::selection {
     @apply bg-zinc-800 text-white;
   }
+  code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
   h1 {
     font-family: 'Bebas Neue', cursive;
   }
