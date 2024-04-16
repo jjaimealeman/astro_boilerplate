@@ -4,9 +4,9 @@ import Card from '../components/Card.astro'
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
+	<main class="mx-auto w-[800px] max-w-[calc(100%_-_2rem)] p-4 text-base text-white">
 		<svg
-			class="astro-a"
+			class="absolute left-1/2 top-[50px] -z-[1] h-auto w-[220px] translate-x-[-50%]"
 			width="495"
 			height="623"
 			viewBox="0 0 495 623"
@@ -33,91 +33,46 @@ import Card from '../components/Card.astro'
 				</linearGradient>
 			</defs>
 		</svg>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
+		<h1 class="mb-16 mt-8 text-center text-[4rem] font-bold leading-4">
+			Welcome to <span
+				class="bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent-light))] bg-clip-text text-transparent"
+				>Astro</span>
+		</h1>
+		<p
+			class="mb-8 rounded-lg border-[1px] border-[rgba(var(--accent-light),25%)] bg-gradient-to-r from-[rgba(var(--accent),66%)] to-[rgba(var(--accent),33%)] p-6"
+		>
+			To get started, open the directory <code
+				class="rounded bg-[rgba(var(--accent-light),12%)] p-[0.3em_0.4em] text-sm font-bold text-[rgb(var(--accent-light))]"
+				>src/pages</code
+			> in your project.<br />
+			<strong class="text-[rgb(var(--accent-light))]">Code Challenge:</strong> Tweak the "Welcome to
+			Astro" message above.
 		</p>
-		<ul role="list" class="link-card-grid">
+		<ul role="list" class="grid grid-cols-[repeat(auto-fit,minmax(24ch,1fr))] gap-8 p-0">
 			<Card
 				href="https://docs.astro.build/"
 				title="Documentation"
+				icon="documentation"
 				body="Learn how Astro works and explore the official API docs."
 			/>
 			<Card
 				href="https://astro.build/integrations/"
 				title="Integrations"
+				icon="integration"
 				body="Supercharge your project with new frameworks and libraries."
 			/>
 			<Card
 				href="https://astro.build/themes/"
 				title="Themes"
+				icon="themes"
 				body="Explore a galaxy of community-built starter themes."
 			/>
 			<Card
 				href="https://astro.build/chat/"
 				title="Community"
+				icon="community"
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
 	</main>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
