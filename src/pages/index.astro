@@ -63,7 +63,7 @@ const oneFeature = await getEntry('features', 'community');
 		</p>
 		<ul role="list" class="grid grid-cols-[repeat(auto-fit,minmax(24ch,1fr))] gap-8 p-0">
 			{
-				allFeatures.map(feature => (
+				allFeatures.map((feature: any) => (
 					<Card
 						title={feature.data.title}
 						body={feature.data.body}
@@ -72,6 +72,8 @@ const oneFeature = await getEntry('features', 'community');
 					/>
 				))
 			}
-					</ul>
+		</ul>
+
+
 	</main>
 </Layout>
