@@ -1,8 +1,21 @@
 ---
+import { getCollection, getEntry } from 'astro:content';
+
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
----
 
+// Get all entries from a collection.
+// Requires the name of the collection as an argument.
+// Example: retrieve `src/content/blog/**`
+const allFeatures = await getCollection('features');
+
+// Get a single entry from a collection.
+// Requires the name of the collection and either
+// the entry `slug` (content collections) or `id` (data collections)
+// Example: retrieve `src/content/authors/grace-hopper.json`
+const oneFeature = await getEntry('features', 'community');
+
+---
 <Layout title="Welcome to Astro.">
 	<main class="mx-auto w-[800px] max-w-[calc(100%_-_2rem)] p-4 text-base text-white">
 		<svg
@@ -49,30 +62,16 @@ import Card from '../components/Card.astro'
 			Astro" message above.
 		</p>
 		<ul role="list" class="grid grid-cols-[repeat(auto-fit,minmax(24ch,1fr))] gap-8 p-0">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				icon="documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				icon="integration"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				icon="themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				icon="community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+			{
+				allFeatures.map(feature => (
+					<Card
+						title={feature.data.title}
+						body={feature.data.body}
+						href={feature.data.href}
+						icon={feature.data.icon}
+					/>
+				))
+			}
+					</ul>
 	</main>
 </Layout>
