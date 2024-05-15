@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content'
 
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
@@ -7,15 +7,17 @@ import Card from '../components/Card.astro'
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
 // Example: retrieve `src/content/blog/**`
-const allFeatures = await getCollection('features');
+const allFeatures = await getCollection('features')
 
 // Get a single entry from a collection.
 // Requires the name of the collection and either
 // the entry `slug` (content collections) or `id` (data collections)
 // Example: retrieve `src/content/authors/grace-hopper.json`
-const oneFeature = await getEntry('features', 'community');
+const oneFeature = await getEntry('features', 'community')
 
+const imageUrl: string = 'https://picsum.photos/seed/picsum/1200/800'
 ---
+
 <Layout title="Welcome to Astro.">
 	<main class="mx-auto w-[800px] max-w-[calc(100%_-_2rem)] p-4 text-base text-white">
 		<svg
