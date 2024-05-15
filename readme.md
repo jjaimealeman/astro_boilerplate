@@ -57,4 +57,6 @@ export default {
 [ ] @tailwindcss/container-queries
 [ ] @tailwindcss/typography
 [ ] @tailwindcss/forms
+[ ] @astrojs/sitemap
+[ ] @astrolib/seo
 [ ] https://github.com/barvian/fluid-tailwind
