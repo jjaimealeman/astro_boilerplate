@@ -48,6 +48,8 @@ export default {
 
 - https://layout.ch/en/
 - https://glaze.dev/documentation/changelog
+- https://saaslandingpage.com/
+- https://saasinterface.com/
 
 ## TODO
 
