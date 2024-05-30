@@ -9,7 +9,6 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "prettier --write \"**/*.{js,jsx,ts,tsx,md,mdx,astro}\""
-
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
@@ -24,6 +23,7 @@
     "@types/node": "^20.12.12",
     "eslint": "9.2.0",
     "eslint-plugin-astro": "^1.2.0",
+    "fluid-tailwind": "^0.3.8",
     "prettier": "^3.2.5",
     "prettier-config-standard": "^7.0.0",
     "prettier-plugin-astro": "^0.13.0",

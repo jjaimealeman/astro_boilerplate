@@ -1,7 +1,11 @@
+import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		screens,
+		fontSize,
 		extend: {
 			colors: {
 				// USING MODERN `RGB`
@@ -11,10 +15,10 @@ export default {
 				// USING LEGACY `RGBA`
 				accent: 'rgba(var(--color-accent), <alpha-value>)',
 				light: 'rgba(var(--color-light), <alpha-value>)',
-				dark: 'rgba(var(--color-dark), <alpha-value>)',
-			},
+				dark: 'rgba(var(--color-dark), <alpha-value>)'
+			}
 			//
-		},
+		}
 	},
-	plugins: [],
+	plugins: [fluid]
 }
