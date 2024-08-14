@@ -4,6 +4,7 @@ import { getCollection, getEntry } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { Icon } from 'astro-icon/components'
+import Navigation from '@/components/navigation.astro'
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
@@ -20,6 +21,7 @@ const imageUrl: string = 'https://picsum.photos/seed/picsum/1200/800'
 ---
 
 <Layout title="Welcome to Astro." description='this is the description for homepage.'>
+	<Navigation />
 	<main class="mx-auto w-[800px] max-w-[calc(100%_-_2rem)] p-4 text-base text-white">
 		<Icon class="absolute left-1/2 top-[50px] -z-[1] h-auto w-[220px] translate-x-[-50%]" name="astro" />
 		<h1 class="mb-16 mt-8 text-center text-[4rem] font-bold leading-4">
