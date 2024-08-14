@@ -61,3 +61,9 @@ export default {
 [ ] @astrolib/seo
 [ ] https://github.com/barvian/fluid-tailwind
 [ ] https://github.com/florian-lefebvre/astro-tailwind-config-viewer/blob/main/package/README.md
+
+---
+
+Wednesday, August 14, 2024 @ 12:27:45 PM
+Using Cursor to write this readme, and get started with AstroDB.
+
