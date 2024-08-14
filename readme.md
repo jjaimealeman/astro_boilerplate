@@ -60,3 +60,4 @@ export default {
 [ ] @astrojs/sitemap
 [ ] @astrolib/seo
 [ ] https://github.com/barvian/fluid-tailwind
+[ ] https://github.com/florian-lefebvre/astro-tailwind-config-viewer/blob/main/package/README.md
