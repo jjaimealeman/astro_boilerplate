@@ -19,11 +19,12 @@ const oneFeature = await getEntry('features', 'community')
 
 const imageUrl: string = 'https://picsum.photos/seed/picsum/1200/800'
 
-import { db, comments, authors, posts } from 'astro:db'
+import { db, eq,comments, authors, posts } from 'astro:db'
 
 const commentDB = await db.select().from(comments)
 const authorDB = await db.select().from(authors)
-const postDB = await db.select().from(posts)
+// const postDB = await db.select().from(posts)
+const postDB = await db.select().from(posts).innerJoin(authors, eq(posts.authorId, authors.id))
 ---
 
 <Layout title="Welcome to Astro." description="this is the description for homepage.">
@@ -79,25 +80,20 @@ const postDB = await db.select().from(posts)
 <h2 class="bg-gray-600 text-lg my-8">Posts</h2>
 		{
 			postDB.map(
-				({ id, title, content, authorId, createdAt, updatedAt }) => (
+				// ({ id, title, content, authorId, createdAt, updatedAt }) => (
+				({ posts, authors }) => (
 					<article class="my-4">
 						<div class="">
-							<strong>id:</strong> {id}
+							<strong>id:</strong> {posts.id}
 						</div>
 						<div class="">
-							<strong>title:</strong> {title}
+							<strong>title:</strong> {posts.title}
 						</div>
 						<div class="">
-							<strong>content:</strong> {content}
+							<strong>author:</strong> {authors.name}
 						</div>
 						<div class="">
-							<strong>authorId:</strong> {authorId}
-						</div>
-						<div class="">
-							<strong>createdAt:</strong> {createdAt}
-						</div>
-						<div class="">
-							<strong>updatedAt:</strong> {updatedAt}
+							<strong>content:</strong> {posts.content}
 						</div>
 					</article>
 				)
