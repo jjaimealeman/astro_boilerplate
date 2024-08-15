@@ -4,20 +4,20 @@ import { db, authors, users, posts, comments } from 'astro:db'
 export default async function () {
 	// Seed the Authors table
 	await db.insert(authors).values([
-		{ id: 1, name: 'Kasim', createdAt: new Date(), updatedAt: new Date() },
-		{ id: 2, name: 'Mina', createdAt: new Date(), updatedAt: new Date() }
+		{ id: 1, name: 'Jaime', createdAt: new Date(), updatedAt: new Date() },
+		{ id: 2, name: 'Jaimito', createdAt: new Date(), updatedAt: new Date() }
 	])
 
 	// Seed the Users table
 	await db.insert(users).values([
 		{
 			id: 1,
-			name: 'Alice',
-			email: 'alice@example.com',
+			name: 'Isabella',
+			email: 'isabella@example.com',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
-		{ id: 2, name: 'Bob', email: 'bob@example.com', createdAt: new Date(), updatedAt: new Date() }
+		{ id: 2, name: 'Olivia', email: 'olivia@example.com', createdAt: new Date(), updatedAt: new Date() }
 	])
 
 	// Seed the Posts table
@@ -34,6 +34,22 @@ export default async function () {
 			id: 2,
 			title: 'My Second Post',
 			content: 'This is the content of my second post. In this post, I delve deeper into the subject matter, providing more detailed analysis and examples. I hope you find the information useful and engaging.',
+			authorId: 2,
+			createdAt: new Date(),
+			updatedAt: new Date()
+		},
+		{
+			id: 3,
+			title: 'My Third Post',
+			content: 'This is the content of my third post. Here, I explore new ideas and concepts that build upon the foundation laid in my previous posts. Stay tuned for more in-depth discussions.',
+			authorId: 1,
+			createdAt: new Date(),
+			updatedAt: new Date()
+		},
+		{
+			id: 4,
+			title: 'My Fourth Post',
+			content: 'This is the content of my fourth post. In this post, I share my latest thoughts and reflections on the topics I have been covering. I hope you find it insightful and thought-provoking.',
 			authorId: 2,
 			createdAt: new Date(),
 			updatedAt: new Date()
