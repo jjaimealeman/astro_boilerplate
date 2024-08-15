@@ -47,7 +47,6 @@ const Comments = defineTable({
 		likes: column.number(),
 		flagged: column.boolean(),
 		published: column.date(),
-		metadata: column.json(),
 		createdAt: column.date({ default: new Date() }),
 		updatedAt: column.date({ default: new Date() })
 	}
