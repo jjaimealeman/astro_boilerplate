@@ -4,6 +4,7 @@ import { getCollection, getEntry } from 'astro:content'
 import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro'
 import { Icon } from 'astro-icon/components'
+import Navigation from '@/components/navigation.astro'
 
 // Get all entries from a collection.
 // Requires the name of the collection as an argument.
@@ -17,15 +18,27 @@ const allFeatures = await getCollection('features')
 const oneFeature = await getEntry('features', 'community')
 
 const imageUrl: string = 'https://picsum.photos/seed/picsum/1200/800'
+
+import { db, eq, authors, posts, users, comments } from 'astro:db'
+
+const commentDB = await db.select().from(comments).innerJoin(users, eq(comments.userId, users.id)).innerJoin(posts, eq(comments.postId, posts.id))
+const authorDB = await db.select().from(authors)
+// const postDB = await db.select().from(posts)
+const postDB = await db.select().from(posts).innerJoin(authors, eq(posts.authorId, authors.id))
 ---
 
-<Layout title="Welcome to Astro.">
-	<main class="mx-auto w-[800px] max-w-[calc(100%_-_2rem)] p-4 text-base text-white">
-		<Icon class="absolute left-1/2 top-[50px] -z-[1] h-auto w-[220px] translate-x-[-50%]" name="astro" />
+<Layout title="Welcome to Astro." description="this is the description for homepage.">
+	<Navigation />
+	<main class="mx-auto max-w-7xl p-4 text-base">
+		<Icon
+			class="absolute left-1/2 top-[50px] -z-[1] h-auto w-[220px] translate-x-[-50%]"
+			name="astro"
+		/>
 		<h1 class="mb-16 mt-8 text-center text-[4rem] font-bold leading-4">
 			Welcome to <span
 				class="bg-gradient-to-r from-[rgb(var(--accent))] to-[rgb(var(--accent-light))] bg-clip-text text-transparent"
-				>Astro</span>
+				>Astro</span
+			>
 		</h1>
 		<p
 			class="mb-8 rounded-lg border-[1px] border-[rgba(var(--accent-light),25%)] bg-gradient-to-r from-[rgba(var(--accent),66%)] to-[rgba(var(--accent),33%)] p-6"
@@ -50,6 +63,84 @@ const imageUrl: string = 'https://picsum.photos/seed/picsum/1200/800'
 			}
 		</ul>
 
+		<h2 class="bg-gray-600 text-lg my-8">Authors</h2>
+		{
+			authorDB.map(({ id, name, email }) => (
+				<article>
+					<div class="">
+						<strong>id:</strong> {id}
+					</div>
+					<div class="">
+						<strong>name:</strong> {name}
+					</div>
+					<div class="">
+						<strong>email:</strong> {email}
+					</div>
+				</article>
+			))
+		}
+
+<h2 class="bg-gray-600 text-lg my-8">Posts</h2>
+		{
+			postDB.map(
+				// ({ id, title, content, authorId, createdAt, updatedAt }) => (
+				({ posts, authors }) => (
+					<article class="my-4">
+						<div class="">
+							<strong>id:</strong> {posts.id}
+						</div>
+						<div class="">
+							<strong>title:</strong> {posts.title}
+						</div>
+						<div class="">
+							<strong>author:</strong> {authors.name}
+						</div>
+						<div class="">
+							<strong>content:</strong> {posts.content}
+						</div>
+					</article>
+				)
+			)
+		}
+
+
+<h2 class="bg-gray-600 text-lg my-8">Comments</h2>
+		{
+			commentDB.map(
+				({ comments, users, posts }) => (
+					<article class="my-4">
+						<div class="">
+							<strong>id:</strong> {comments.id}
+						</div>
+						<div class="">
+							<strong>userId:</strong> {users.name}
+						</div>
+						<div class="">
+							<strong>postId:</strong> {comments.postId}
+						</div>
+						<div class="">
+							<strong>postId:</strong> {posts.title}
+						</div>
+						<div class="">
+							<strong>body:</strong> {comments.body}
+						</div>
+						<div class="">
+							<strong>likes:</strong> {comments.likes}
+						</div>
+						<div class="">
+							<strong>flagged:</strong>
+							<span
+								set:html={
+									comments.flagged
+										? '<span class="bg-red-400"> YES </span>'
+										: '<span class="bg-green-400"> NO </span>'
+								}
+							/>
+						</div>
+					</article>
+				)
+			)
+		}
 
 	</main>
 </Layout>
