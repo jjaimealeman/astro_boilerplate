@@ -65,13 +65,16 @@ const postDB = await db.select().from(posts).innerJoin(authors, eq(posts.authorI
 
 		<h2 class="bg-gray-600 text-lg my-8">Authors</h2>
 		{
-			authorDB.map(({ id, name }) => (
+			authorDB.map(({ id, name, email }) => (
 				<article>
 					<div class="">
 						<strong>id:</strong> {id}
 					</div>
 					<div class="">
 						<strong>name:</strong> {name}
+					</div>
+					<div class="">
+						<strong>email:</strong> {email}
 					</div>
 				</article>
 			))

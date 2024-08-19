@@ -4,8 +4,8 @@ import { db, authors, users, posts, comments } from 'astro:db'
 export default async function () {
 	// Seed the Authors table
 	await db.insert(authors).values([
-		{ id: 1, name: 'Jaime', createdAt: new Date(), updatedAt: new Date() },
-		{ id: 2, name: 'Jaimito', createdAt: new Date(), updatedAt: new Date() }
+		{ id: 1, name: 'Jaime', email: 'jaime@example.com', createdAt: new Date(), updatedAt: new Date() },
+		{ id: 2, name: 'James', email: 'james@example.com', createdAt: new Date(), updatedAt: new Date() }
 	])
 
 	// Seed the Users table
